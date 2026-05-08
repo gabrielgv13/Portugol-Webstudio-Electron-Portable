@@ -12,6 +12,39 @@ import { patchHtmlFiles, patchPortugolFiles } from "./helpers/patch.js";
 
 import "./ajuda.js";
 
+async function syncLocalExamples() {
+  const sourceVetoresDir = path.join(baseDir, "..", "src", "custom-examples", "bibliotecas", "vetores");
+  const targetVetoresDir = path.join(baseDir, "exemplos", "bibliotecas", "vetores");
+  const bibliotecasIndexPath = path.join(baseDir, "exemplos", "bibliotecas", "index.properties");
+
+  if (existsSync(sourceVetoresDir)) {
+    await fs.mkdir(path.dirname(targetVetoresDir), { recursive: true });
+    await fs.cp(sourceVetoresDir, targetVetoresDir, { recursive: true });
+  }
+
+  if (existsSync(bibliotecasIndexPath)) {
+    const currentIndex = await fs.readFile(bibliotecasIndexPath, "utf8");
+    const alreadyRegistered = /^item\d+\.dir\s*=\s*vetores\s*$/m.test(currentIndex);
+
+    if (!alreadyRegistered) {
+      const itemIndexes = [...currentIndex.matchAll(/^item(\d+)\./gm)].map(match => Number(match[1]));
+      const nextIndex = itemIndexes.length > 0 ? Math.max(...itemIndexes) + 1 : 0;
+      const nextCount = nextIndex + 1;
+
+      const updatedIndex = currentIndex
+        .replace(/^items\s*=\s*\d+/m, `items = ${nextCount}`)
+        .replace(/\s*$/, "\n")
+        .concat(
+          `\nitem${nextIndex}.name = Vetores\n`,
+          `item${nextIndex}.type = dir\n`,
+          `item${nextIndex}.dir = vetores\n`,
+        );
+
+      await fs.writeFile(bibliotecasIndexPath, updatedIndex);
+    }
+  }
+}
+
 export async function configurarRecursos() {
   const assetsPath = "Portugol-Studio-master/ide/src/main/assets/";
   const tempDir = path.join(baseDir, "..", "recursos.temp/");
@@ -29,6 +62,8 @@ export async function configurarRecursos() {
 
     console.log("Remote ETag:", remoteEtag);
 
+    let resourcesNeedRefresh = true;
+
     if (existsSync(localEtag)) {
       const localETagContents = await fs.readFile(localEtag, "utf8");
 
@@ -36,41 +71,44 @@ export async function configurarRecursos() {
 
       if (localETagContents === remoteEtag) {
         console.log("Recursos de ajuda já estão atualizados.");
-        return;
+        resourcesNeedRefresh = !existsSync(baseDir);
       }
     }
 
-    // Excluir o diretório de recursos caso exista
-    if (existsSync(baseDir)) {
-      rimraf.sync(baseDir);
+    if (resourcesNeedRefresh) {
+      // Excluir o diretório de recursos caso exista
+      if (existsSync(baseDir)) {
+        rimraf.sync(baseDir);
+      }
+
+      await download(fileUrl, psZip);
+
+      console.log("Download concluído, extraindo os recursos de ajuda…");
+
+      const zip = new AdmZip(psZip);
+
+      console.log(`Extraindo [Portugol-Studio.zip]/${assetsPath} para ${tempDir}…`);
+      zip.extractEntryTo(assetsPath, tempDir, true, true);
+
+      console.log(`Refazendo estrutura do diretório…`);
+      await fs.rename(tempDir + assetsPath, baseDir);
+
+      console.log("Removendo arquivos temporários…");
+      rimraf.sync(tempDir);
+      await fs.unlink(psZip);
+
+      console.log("Gerando índice da aba Ajuda…");
+      await import(url.pathToFileURL(path.join(baseDir, "ajuda", "scripts", "topicos.js")).toString());
+
+      console.log(`Ajustando arquivos HTML… (Base Path: "${baseHtmlPath}")`);
+      await patchHtmlFiles();
+
+      console.log("Ajustando arquivos POR…");
+      await patchPortugolFiles();
     }
 
-    await download(fileUrl, psZip);
-
-    console.log("Download concluído, extraindo os recursos de ajuda…");
-
-    const zip = new AdmZip(psZip);
-
-    console.log(`Extraindo [Portugol-Studio.zip]/${assetsPath} para ${tempDir}…`);
-    zip.extractEntryTo(assetsPath, tempDir, true, true);
-
-    console.log(`Refazendo estrutura do diretório…`);
-    await fs.rename(tempDir + assetsPath, baseDir);
-
-    console.log("Removendo arquivos temporários…");
-    rimraf.sync(tempDir);
-    await fs.unlink(psZip);
-
-    console.log("Gerando índice da aba Ajuda…");
-    await import(url.pathToFileURL(path.join(baseDir, "ajuda", "scripts", "topicos.js")).toString());
-
-    console.log(`Ajustando arquivos HTML… (Base Path: "${baseHtmlPath}")`);
-    await patchHtmlFiles();
-
-    console.log("Ajustando arquivos POR…");
-    await patchPortugolFiles();
-
     console.log("Gerando índice da seção Exemplos…");
+    await syncLocalExamples();
     await fs.writeFile(
       path.join(baseDir, "exemplos", "index.json"),
       JSON.stringify(await generateExamplesJson(path.join(baseDir, "exemplos"), "")),

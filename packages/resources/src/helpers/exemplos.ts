@@ -16,7 +16,18 @@ export async function generateExamplesJson(baseDir: string, dir: string) {
   console.log(`-> Obtendo exemplos de ${indexDir}`);
 
   const indexProperties = path.join(indexDir, "index.properties");
-  const parsedProperties = ini.decode(await fs.readFile(indexProperties, "utf8"));
+  let parsedProperties: Record<string, any>;
+
+  try {
+    parsedProperties = ini.decode(await fs.readFile(indexProperties, "utf8"));
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return [];
+    }
+
+    throw error;
+  }
+
   const keys = Object.keys(parsedProperties);
   const items: Array<Record<string, string>> = [];
 
