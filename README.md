@@ -1,11 +1,13 @@
 <a href="https://portugol.dev/"><img src="./packages/ide/src/assets/lightbulb.svg" width="123px" alt="Portugol Webstudio" align="right"></a>
 
-# Portugol Webstudio
+# Portugol Webstudio (fork)
 
 _IDE online para o Portugol_
 
-[![Licença](https://img.shields.io/badge/licen%C3%A7a-GPL-blue.svg)](https://github.com/dgadelha/Portugol-Webstudio/blob/master/LICENSE)
-[![Stars](https://img.shields.io/github/stars/dgadelha/Portugol-Webstudio)](https://github.com/dgadelha/Portugol-Webstudio/stargazers)
+Fork mantido por [Gabriel Gianesini Ventura](https://github.com/gabrielgv13).
+
+[![Licença](https://img.shields.io/badge/licen%C3%A7a-GPL-blue.svg)](https://github.com/gabrielgv13/Portugol-Webstudio/blob/main/LICENSE)
+[![Stars](https://img.shields.io/github/stars/gabrielgv13/Portugol-Webstudio)](https://github.com/gabrielgv13/Portugol-Webstudio/stargazers)
 
 Baseado no Portugol Studio, o **Portugol Webstudio** tenta trazer todo ambiente de desenvolvimento que é possível se encontrar no desktop, para a internet. Ele constitui-se de um ambiente de desenvolvimento construído para permitir a criação e a execução dos programas escritos em Portugol, trazendo assim uma experiência o mais próxima do que você pode encontrar da IDE do Portugol Studio. Portugol, também conhecido como Português estruturado, é um pseudocódigo escrito em português.
 
@@ -120,7 +122,15 @@ npm run package:portable:dir
         do desempenho da máquina).
 Após isto, você poderá acessar a IDE em: [http://localhost:4200](http://localhost:4200)
 
-## Contribuidores
+## Manutenção deste fork
+
+Este repositório é um fork do projeto original mantido por Douglas e Danilo Gadêlha. Eu mantenho esta cópia com ajustes e releases portáteis.
+
+**Mantido por:**
+
+- [Gabriel Gianesini Ventura](https://github.com/gabrielgv13)
+
+**Contribuidores originais:**
 
 - [Douglas Gadêlha](https://github.com/dgadelha)
 - [Danilo Gadêlha](https://github.com/dngadelha)
@@ -128,7 +138,9 @@ Após isto, você poderá acessar a IDE em: [http://localhost:4200](http://local
 
 ## Sobre o Projeto
 
-**Autores:** [Douglas Gadêlha](mailto:dgadelha@live.com) e [Danilo Gadêlha](mailto:dngadelha@outlook.com)
+Este repositório é uma cópia/fork do projeto original. Os autores originais são os listados abaixo; consulte a licença para termos de uso.
+
+**Autores originais:** [Douglas Gadêlha](mailto:dgadelha@live.com) e [Danilo Gadêlha](mailto:dngadelha@outlook.com)
 
 ## Licença
 
