@@ -4,6 +4,7 @@ import Matematica from "./Matematica.js";
 import Texto from "./Texto.js";
 import Tipos from "./Tipos.js";
 import Util from "./Util.js";
+import Vetores from "./Vetores.js";
 
 export const portugolLibs = /* javascript */ `{
   Calendario: ${Calendario},
@@ -12,4 +13,5 @@ export const portugolLibs = /* javascript */ `{
   Texto: ${Texto},
   Tipos: ${Tipos},
   Util: ${Util},
+  Vetores: ${Vetores},
 }`;
