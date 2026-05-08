@@ -24,24 +24,43 @@ async function syncLocalExamples() {
 
   if (existsSync(bibliotecasIndexPath)) {
     const currentIndex = await fs.readFile(bibliotecasIndexPath, "utf8");
-    const alreadyRegistered = /^item\d+\.dir\s*=\s*vetores\s*$/m.test(currentIndex);
+    const items = currentIndex
+      .split(/\r?\n/)
+      .map(line => line.trim())
+      .filter(line => line.length > 0);
 
-    if (!alreadyRegistered) {
-      const itemIndexes = [...currentIndex.matchAll(/^item(\d+)\./gm)].map(match => Number(match[1]));
-      const nextIndex = itemIndexes.length > 0 ? Math.max(...itemIndexes) + 1 : 0;
-      const nextCount = nextIndex + 1;
+    const parsedItems = new Map<number, Record<string, string>>();
 
-      const updatedIndex = currentIndex
-        .replace(/^items\s*=\s*\d+/m, `items = ${nextCount}`)
-        .replace(/\s*$/, "\n")
-        .concat(
-          `\nitem${nextIndex}.name = Vetores\n`,
-          `item${nextIndex}.type = dir\n`,
-          `item${nextIndex}.dir = vetores\n`,
-        );
+    for (const line of items) {
+      const match = line.match(/^item(\d+)\.(\w+)\s*=\s*(.+)$/);
+      if (!match) {
+        continue;
+      }
 
-      await fs.writeFile(bibliotecasIndexPath, updatedIndex);
+      const index = Number(match[1]);
+      const key = match[2];
+      const value = match[3];
+      const current = parsedItems.get(index) ?? {};
+
+      current[key] = value;
+      parsedItems.set(index, current);
     }
+
+    const normalized = [...parsedItems.values()]
+      .filter(item => item.type === "dir")
+      .filter(item => String(item.dir ?? "").trim().toLowerCase() !== "vetores");
+
+    normalized.push({ name: "Vetores", type: "dir", dir: "vetores" });
+
+    let rebuilt = `items = ${normalized.length}\n\n`;
+
+    normalized.forEach((item, index) => {
+      rebuilt += `item${index}.name = ${item.name}\n`;
+      rebuilt += `item${index}.type = ${item.type}\n`;
+      rebuilt += `item${index}.dir = ${item.dir}\n\n`;
+    });
+
+    await fs.writeFile(bibliotecasIndexPath, rebuilt);
   }
 }
 

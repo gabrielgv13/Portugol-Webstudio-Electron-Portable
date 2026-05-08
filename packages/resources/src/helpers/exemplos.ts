@@ -30,6 +30,7 @@ export async function generateExamplesJson(baseDir: string, dir: string) {
 
   const keys = Object.keys(parsedProperties);
   const items: Array<Record<string, string>> = [];
+  const seenDirs = new Set<string>();
 
   for (let i = 0; i < parsedProperties.items; i++) {
     const item = keys
@@ -43,10 +44,24 @@ export async function generateExamplesJson(baseDir: string, dir: string) {
       continue;
     }
 
+    if (item.type === "dir") {
+      const dirName = String(item.dir ?? "").trim().toLowerCase();
+
+      if (dirName.length === 0 || seenDirs.has(dirName)) {
+        continue;
+      }
+
+      seenDirs.add(dirName);
+    }
+
     item.id = `${dir}/${item.dir ?? item.file}`;
 
     if (item.type === "dir") {
       item.children = await generateExamplesJson(baseDir, path.join(dir, item.dir));
+
+      if (!item.children || item.children.length === 0) {
+        continue;
+      }
     }
 
     item.file &&= path.join(baseDir, dir, item.file).slice(Math.max(0, baseDir.length + 1));
