@@ -120,7 +120,17 @@ npm run package:portable:dir
         binário.
     - O processo de build pode demorar alguns minutos (dependendo da conexão e
         do desempenho da máquina).
-Após isto, você poderá acessar a IDE em: [http://localhost:4200](http://localhost:4200)
+Como executar a versão portátil (Windows):
+
+- Localize o arquivo gerado em `packages/desktop/dist`, por exemplo
+    `Portugol-Webstudio-0.0.0-portable.exe`.
+- Dê duplo-clique no arquivo `.exe` para executar o aplicativo — ele roda como
+    um aplicativo nativo do Windows (não é necessário iniciar um servidor local).
+
+Observação: os passos anteriores para `npm start` e `http://localhost:4200` se
+aplicam apenas ao modo de desenvolvimento (quando você quer executar a IDE no
+seu navegador a partir do código fonte). A versão portátil é uma aplicação
+nativa empacotada com Electron e não precisa do servidor de desenvolvimento.
 
 ## Manutenção deste fork
 
