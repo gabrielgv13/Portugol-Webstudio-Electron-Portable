@@ -1,6 +1,6 @@
 {
   "name": "@portugol-webstudio/runtime",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "build:w": "tsc -w"
   },
   "dependencies": {
-    "@portugol-webstudio/antlr": "*",
+    "@portugol-webstudio/antlr": "^0.1.0",
     "@sentry/core": "^10.48.0",
     "antlr4ng": "^3.0.16"
   },

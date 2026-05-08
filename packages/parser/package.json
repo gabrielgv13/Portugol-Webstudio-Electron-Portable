@@ -1,6 +1,6 @@
 {
   "name": "@portugol-webstudio/parser",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@portugol-webstudio/antlr": "*",
+    "@portugol-webstudio/antlr": "^0.1.0",
     "antlr4ng": "^3.0.16"
   },
   "devDependencies": {

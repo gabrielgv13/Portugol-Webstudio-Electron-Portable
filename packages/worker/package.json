@@ -1,6 +1,6 @@
 {
   "name": "@portugol-webstudio/worker",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dgadelha/Portugol-Webstudio.git"
@@ -33,9 +33,9 @@
     "build:w": "webpack watch"
   },
   "dependencies": {
-    "@portugol-webstudio/antlr": "*",
-    "@portugol-webstudio/parser": "*",
-    "@portugol-webstudio/runtime": "*",
+    "@portugol-webstudio/antlr": "^0.1.0",
+    "@portugol-webstudio/parser": "^0.1.0",
+    "@portugol-webstudio/runtime": "^0.1.0",
     "antlr4ng": "^3.0.16"
   },
   "devDependencies": {
