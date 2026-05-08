@@ -13,6 +13,13 @@ Baseado no Portugol Studio, o **Portugol Webstudio** tenta trazer todo ambiente 
 
 [![Captura de Tela](.github/screenshot.png)](https://portugol.dev/)
 
+## Novidades desta fork
+
+- Mais bibliotecas e exemplos acessíveis em `Abrir Exemplo...`, com destaque para `Bibliotecas > Vetores`.
+- Exemplos de `Vetores` atualizados para usar alias, por exemplo `inclua biblioteca Vetores --> vt`, deixando o uso das funções mais claro.
+- Biblioteca `Vetores` com comportamento documentado para pilha e fila, incluindo operações como `acrescentar`, `empilhar`, `desempilhar`, `enfileirar` e `desenfileirar`.
+- Validação mais explícita ao trabalhar com vetores vazios, com mensagens de erro mais claras para operações inválidas.
+
 ## Características
 
 - Suporta abertura e escrita de arquivos `.por`
@@ -20,6 +27,7 @@ Baseado no Portugol Studio, o **Portugol Webstudio** tenta trazer todo ambiente 
 - Executado no console original do Portugol com interação em tempo real
 - Interface simples e idêntica ao Portugol Studio
 - Código executado diretamente no navegador através de Web Workers
+- Integração com bibliotecas do Portugol Webstudio e exemplos organizados por categoria
 
 ## Estrutura do projeto
 
