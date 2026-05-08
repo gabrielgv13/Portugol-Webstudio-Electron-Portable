@@ -1,0 +1,46 @@
+{
+  "name": "@portugol-webstudio/desktop",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Portable desktop shell for Portugol Webstudio",
+  "type": "module",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "package:portable": "npx electron-builder --win portable --publish never",
+    "package:portable:dir": "npx electron-builder --win portable --dir --publish never",
+    "postinstall": "node -e \"if(process.env.npm_config_production==='true'){console.log('Skipping postinstall during production install');}else{try{require('child_process').spawnSync('patch-package',{stdio:'inherit'});}catch(e){console.warn('patch-package not available')}}\""
+  },
+  "devDependencies": {
+    "app-builder-bin": "4.0.0",
+    "electron": "^36.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "dev.portugol.webstudio",
+    "productName": "Portugol Webstudio",
+    "electronVersion": "36.0.0",
+    "asar": false,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../ide/dist-desktop",
+        "to": "app-dist"
+      }
+    ],
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        "portable"
+      ],
+      "artifactName": "Portugol-Webstudio-${version}-portable.${ext}"
+    }
+  }
+}

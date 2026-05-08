@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["packages/ide/src/app/dialog-renderer/dialog-renderer.component.scss"],
+  "sourcesContent": ["header {\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 0.25rem 1rem;\r\n  cursor: grab;\r\n\r\n  &.cdk-drag-dragging {\r\n    cursor: grabbing;\r\n  }\r\n}\r\n\r\n.renderer-content {\r\n  padding: 0 !important;\r\n}\r\n"],
+  "mappings": "AAAA,OACE,QAAA,KACA,YAAA,OAFF,QAGE,OAAA,KACA,OAAA,KAEA,MAAA,CAAA,kBACE,OAAA,SAIJ,CAAA,iBAXA,QAYE",
+  "names": []
+}

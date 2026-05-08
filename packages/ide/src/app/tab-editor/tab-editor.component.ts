@@ -13,6 +13,7 @@ import { Subscription, combineLatest, debounceTime, fromEventPattern, mergeMap }
 import { GraphicsRenderer, IGraphicsRendererComponent } from "../../renderer";
 import { IExtendedWindowApi } from "../../types";
 import { DialogRendererComponent } from "../dialog-renderer/dialog-renderer.component";
+import { environment } from "../../environments/environment";
 import { FileService } from "../file.service";
 import { SettingsService } from "../settings.service";
 import { ShareService } from "../share.service";
@@ -203,6 +204,23 @@ export class TabEditorComponent implements OnInit, OnDestroy {
         event.component = component;
       }
     });
+
+    // Desktop integration: respond to native Save command
+    try {
+      const desktop = (window as any).portugolDesktop;
+
+      if (desktop?.onCmdSave) {
+        desktop.onCmdSave(() => {
+          try {
+            this.saveFile();
+          } catch (err) {
+            console.error("Error saving file from desktop host:", err);
+          }
+        });
+      }
+    } catch {
+      // noop
+    }
   }
 
   ngOnDestroy() {
@@ -319,9 +337,36 @@ export class TabEditorComponent implements OnInit, OnDestroy {
     return { blob, fileName };
   }
 
-  saveFile(compat = false) {
+  async saveFile(compat = false) {
     const { blob, fileName } = this.prepareFile("binary", compat);
 
+    if (environment.desktop && (window as any).portugolDesktop) {
+      try {
+        const arrayBuffer = await blob.arrayBuffer();
+        const uint8 = new Uint8Array(arrayBuffer as ArrayBuffer);
+        const desktop = (window as any).portugolDesktop;
+
+        const filePath = await desktop.saveFile({ suggestedName: fileName });
+
+        if (!filePath) return;
+
+        const res = await desktop.writeFile(filePath, uint8, true);
+
+        if (res?.ok) {
+          this.snack.open("Arquivo salvo com sucesso!", "OK", { duration: 3000 });
+        } else {
+          console.error(res?.error);
+          this.snack.open("Ocorreu um erro ao salvar o arquivo!", "OK", { duration: 3000 });
+        }
+      } catch (err) {
+        console.error(err);
+        this.snack.open("Ocorreu um erro ao salvar o arquivo!", "OK", { duration: 3000 });
+      }
+
+      return;
+    }
+
+    // Fallback to browser download
     saveAs(blob, fileName, { autoBom: false });
   }
 

@@ -1,4 +1,5 @@
 import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { environment } from "../environments/environment";
 import { FormControl } from "@angular/forms";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -56,6 +57,28 @@ export class AppComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit() {
+    // Desktop integration: listen for native "Open" command
+    try {
+      const desktop = (window as any).portugolDesktop;
+
+      if (environment.desktop && desktop?.onCmdOpen) {
+        desktop.onCmdOpen(async () => {
+          try {
+            const res = await desktop.openFile();
+
+            if (res && res.contents !== undefined) {
+              const parts = (res.filePath || "").split(/[/\\\\]/);
+              const name = parts[parts.length - 1] || res.filePath;
+              this.addTab(name, res.contents);
+            }
+          } catch (err) {
+            console.error("Error opening file from desktop host:", err);
+          }
+        });
+      }
+    } catch {
+      // ignore if desktop API not available
+    }
     void (async () => {
       if (window.location.hash.startsWith("#share=")) {
         this.snack.open("Carregando código compartilhado…", undefined, { duration: -1 });

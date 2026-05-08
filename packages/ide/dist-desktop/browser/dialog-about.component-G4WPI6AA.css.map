@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["packages/ide/src/app/dialog-about/dialog-about.component.scss"],
+  "sourcesContent": ["mat-dialog-content {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 1rem;\r\n  align-items: center;\r\n  text-align: center;\r\n  position: relative;\r\n  max-height: unset;\r\n  max-width: min(85vw, 780px);\r\n}\r\n\r\n.close-btn {\r\n  position: absolute;\r\n  top: 0.5rem;\r\n  right: 0.5rem;\r\n}\r\n\r\n.logo {\r\n  display: block;\r\n  width: min(80%, 350px);\r\n  padding: 0.5rem;\r\n}\r\n\r\n.made-with-love {\r\n  display: flex;\r\n  gap: 0.5rem;\r\n  align-items: center;\r\n\r\n  svg-icon,\r\n  svg {\r\n    width: 1.5rem;\r\n    height: 1.5rem;\r\n  }\r\n}\r\n\r\n.links {\r\n  display: flex;\r\n  flex-direction: row;\r\n  gap: 1rem;\r\n\r\n  @media (max-width: 576px) {\r\n    flex-direction: column;\r\n  }\r\n}\r\n"],
+  "mappings": "AAAA,mBACE,QAAA,KACA,eAAA,OACA,IAAA,KACA,YAAA,OACA,WAAA,OACA,SAAA,SACA,WAAA,MACA,UAAA,IAAA,IAAA,CAAA,OAGF,CAAA,UACE,SAAA,SACA,IAAA,MACA,MAAA,MAGF,CAAA,KACE,QAAA,MACA,MAAA,IAAA,GAAA,CAAA,OAnBF,QAoBE,MAGF,CAAA,eACE,QAAA,KACA,IAAA,MACA,YAAA,OAEA,CALF,eAKE,SAAA,CALF,eAKE,IAEE,MAAA,OACA,OAAA,OAIJ,CAAA,MACE,QAAA,KACA,eAAA,IACA,IAAA,KAEA,OAAA,UAAA,OALF,CAAA,MAMI,eAAA",
+  "names": []
+}

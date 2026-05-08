@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  desktop: false,
   firebase: {
     apiKey: "AIzaSyD_6fjI7Vsm4RQS6EJZSZ_an7Zehjz9YwQ",
     authDomain: "portugol-webstudio.firebaseapp.com",

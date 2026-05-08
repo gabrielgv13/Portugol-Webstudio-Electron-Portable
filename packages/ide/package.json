@@ -24,7 +24,9 @@
   "homepage": "https://github.com/dgadelha/Portugol-Webstudio#readme",
   "scripts": {
     "start": "ng serve",
+    "build": "ng build",
     "release": "ng build",
+    "build:desktop": "ng build --configuration desktop",
     "watch": "ng build --watch --configuration development",
     "lint": "ng lint"
   },

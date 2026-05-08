@@ -119,6 +119,28 @@
               ],
               "outputHashing": "all"
             },
+            "desktop": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "5MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "10kB"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "packages/ide/src/environments/environment.ts",
+                  "with": "packages/ide/src/environments/environment.desktop.ts"
+                }
+              ],
+              "outputPath": "packages/ide/dist-desktop",
+              "outputHashing": "all"
+            },
             "development": {
               "optimization": false,
               "extractLicenses": false,

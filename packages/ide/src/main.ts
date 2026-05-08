@@ -5,23 +5,27 @@ import * as Sentry from "@sentry/angular";
 import { AppModule } from "./app/app.module";
 import { environment } from "./environments/environment";
 
-Sentry.init({
-  enabled: environment.production,
-  dsn: "https://620518162f784d2aa3e3ee7223d08594@o1070945.ingest.sentry.io/6067438",
-  debug: false,
-  tracesSampleRate: 0.1,
-  replaysOnErrorSampleRate: 0.1,
-  release: "%SENTRY_RELEASE%",
-  integrations: [
-    Sentry.replayIntegration({
-      maskAllInputs: false,
-      maskAllText: false,
-    }),
-    Sentry.extraErrorDataIntegration(),
-    Sentry.browserTracingIntegration(),
-  ],
-  ignoreErrors: [/failed to fetch/i, /networkerror/i, /http failure response/i, /monaco-editor/i],
-});
+const isDesktopBuild = environment.desktop === true;
+
+if (!isDesktopBuild) {
+  Sentry.init({
+    enabled: environment.production,
+    dsn: "https://620518162f784d2aa3e3ee7223d08594@o1070945.ingest.sentry.io/6067438",
+    debug: false,
+    tracesSampleRate: 0.1,
+    replaysOnErrorSampleRate: 0.1,
+    release: "%SENTRY_RELEASE%",
+    integrations: [
+      Sentry.replayIntegration({
+        maskAllInputs: false,
+        maskAllText: false,
+      }),
+      Sentry.extraErrorDataIntegration(),
+      Sentry.browserTracingIntegration(),
+    ],
+    ignoreErrors: [/failed to fetch/i, /networkerror/i, /http failure response/i, /monaco-editor/i],
+  });
+}
 
 if (environment.production) {
   enableProdMode();
@@ -32,7 +36,7 @@ platformBrowser()
   .then(() => {
     try {
       /** @see https://stackoverflow.com/a/51059335 */
-      if ("serviceWorker" in navigator && environment.production) {
+      if (!isDesktopBuild && "serviceWorker" in navigator && environment.production) {
         void navigator.serviceWorker.register("/ngsw-worker.js");
       }
     } catch (error: unknown) {

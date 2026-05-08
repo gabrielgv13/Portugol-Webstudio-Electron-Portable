@@ -28,7 +28,7 @@ import * as Sentry from "@sentry/angular";
 import { AngularSplitModule } from "angular-split";
 import { AngularSvgIconModule } from "angular-svg-icon";
 import { KeyboardShortcutsModule } from "ng-keyboard-shortcuts";
-import { NgxGoogleAnalyticsModule } from "ngx-google-analytics";
+import { GoogleAnalyticsService, NgxGoogleAnalyticsModule } from "ngx-google-analytics";
 import { MarkdownModule } from "ngx-markdown";
 import { provideNgxWebstorage, withNgxWebstorageConfig } from "ngx-webstorage";
 
@@ -43,57 +43,86 @@ import { TabHelpComponent } from "./tab-help/tab-help.component";
 import { TabStartComponent } from "./tab-start/tab-start.component";
 import { ThemeService } from "./theme.service";
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AngularSplitModule,
-    MonacoEditorModule,
-    KeyboardShortcutsModule.forRoot(),
-    NgxGoogleAnalyticsModule.forRoot("G-ZKM28VG4G5"),
-    MarkdownModule.forRoot(),
-    AngularSvgIconModule.forRoot(),
-    MatSnackBarModule,
-    MatRippleModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
-    MatTabsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatTreeModule,
-    MatMenuModule,
-    ServiceWorkerModule.register("ngsw-worker.js", {
-      enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: "registerWhenStable:30000",
-    }),
-  ],
-  declarations: [AppComponent, TabEditorComponent, TabStartComponent, TabHelpComponent, DialogOpenExampleComponent],
-  providers: [
-    provideZoneChangeDetection(),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage()),
-    provideHttpClient(withInterceptorsFromDi()),
-    provideHotToastConfig({
-      position: "bottom-right",
-    }),
-    provideNgxWebstorage(withNgxWebstorageConfig({ prefix: "pws", separator: ":" }), withNgxLocalStorageFallback()),
-    provideAppInitializer(() => {
-      inject(MonacoService);
-      inject(ThemeService);
+const isDesktopBuild = environment.desktop === true;
+
+const noopAnalyticsService = {
+  event: () => undefined,
+  pageView: () => undefined,
+} as Pick<GoogleAnalyticsService, "event" | "pageView">;
+
+const appImports = [
+  BrowserModule,
+  FormsModule,
+  AngularSplitModule,
+  MonacoEditorModule,
+  KeyboardShortcutsModule.forRoot(),
+  MarkdownModule.forRoot(),
+  AngularSvgIconModule.forRoot(),
+  MatSnackBarModule,
+  MatRippleModule,
+  MatProgressSpinnerModule,
+  MatDialogModule,
+  MatTabsModule,
+  MatButtonModule,
+  MatIconModule,
+  MatTooltipModule,
+  MatTreeModule,
+  MatMenuModule,
+  ...(!isDesktopBuild ? [NgxGoogleAnalyticsModule.forRoot("G-ZKM28VG4G5")] : []),
+  ...(!isDesktopBuild
+    ? [
+        ServiceWorkerModule.register("ngsw-worker.js", {
+          enabled: !isDevMode(),
+          // Register the ServiceWorker as soon as the application is stable
+          // or after 30 seconds (whichever comes first).
+          registrationStrategy: "registerWhenStable:30000",
+        }),
+      ]
+    : []),
+];
+
+const appProviders = [
+  provideZoneChangeDetection(),
+  ...(isDesktopBuild ? [{ provide: GoogleAnalyticsService, useValue: noopAnalyticsService }] : []),
+  ...(isDesktopBuild
+    ? []
+    : [
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideStorage(() => getStorage()),
+      ]),
+  provideHttpClient(withInterceptorsFromDi()),
+  provideHotToastConfig({
+    position: "bottom-right",
+  }),
+  provideNgxWebstorage(withNgxWebstorageConfig({ prefix: "pws", separator: ":" }), withNgxLocalStorageFallback()),
+  provideAppInitializer(() => {
+    inject(MonacoService);
+    inject(ThemeService);
+
+    if (!isDesktopBuild) {
       inject(PwaService);
-    }),
-    MonacoService,
-    PwaService,
-    {
-      provide: ErrorHandler,
-      useValue: Sentry.createErrorHandler({
-        showDialog: false,
-      }),
-    },
-  ],
+    }
+  }),
+  MonacoService,
+  ...(isDesktopBuild ? [] : [PwaService]),
+  {
+    provide: ErrorHandler,
+    useValue: isDesktopBuild
+      ? {
+          handleError(error: unknown) {
+            console.error(error);
+          },
+        }
+      : Sentry.createErrorHandler({
+          showDialog: false,
+        }),
+  },
+];
+
+@NgModule({
+  imports: appImports,
+  declarations: [AppComponent, TabEditorComponent, TabStartComponent, TabHelpComponent, DialogOpenExampleComponent],
+  providers: appProviders,
   bootstrap: [AppComponent],
 })
 export class AppModule {}
