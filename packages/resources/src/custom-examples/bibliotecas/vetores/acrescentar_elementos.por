@@ -5,16 +5,16 @@
   dinâmico em Portugol e ir adicionando valores ao final dele.
 */
 programa {
-  inclua biblioteca Vetores
+  inclua biblioteca Vetores --> vt
 
   funcao inicio() {
     inteiro numeros[]
 
-    acrescentar(numeros, 10)
-    acrescentar(numeros, 20)
-    acrescentar(numeros, 30)
-    acrescentar(numeros, 40)
-    acrescentar(numeros, 50)
+    vt.acrescentar(numeros, 10)
+    vt.acrescentar(numeros, 20)
+    vt.acrescentar(numeros, 30)
+    vt.acrescentar(numeros, 40)
+    vt.acrescentar(numeros, 50)
 
     escreva("Vetor após usar acrescentar():\n")
     escreva("numeros[0] = " + numeros[0] + "\n")
