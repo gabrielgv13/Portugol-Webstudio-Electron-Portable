@@ -7,6 +7,33 @@ out-tsc
 # Ignore packaged distributables
 /dist
 /packages/desktop/dist
+## Generic build outputs and bundles that are not required for source-only clones
+**/dist/
+**/dist-*/
+**/dist-*/**
+**/lib/
+**/build/
+**/out/
+**/coverage/
+packages/*/dist/
+packages/**/dist-desktop/
+
+## Caches and tool outputs
+.cache/
+.parcel-cache/
+.next/
+.turbo/
+.nyc_output/
+.eslintcache
+
+## Source maps (optional - remove if you want to commit them)
+*.map
+
+## Local environment and credential files
+.env
+.env.*
+*.local
+
 # Only exists if Bazel was run
 bazel-out
 
