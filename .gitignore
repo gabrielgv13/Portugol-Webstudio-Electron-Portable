@@ -4,6 +4,9 @@
 dist
 tmp
 out-tsc
+# Ignore packaged distributables
+/dist
+/packages/desktop/dist
 # Only exists if Bazel was run
 bazel-out
 
