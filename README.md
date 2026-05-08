@@ -53,6 +53,71 @@ npm run build
 npm start
 ```
 
+## Criando uma Versão Portátil (Windows)
+
+Se você quer gerar uma versão portátil do Portugol Webstudio (um executável
+Windows "portable"), siga estes passos. As instruções abaixo assumem que você
+está usando o PowerShell no Windows.
+
+- Requisitos:
+    - Windows 10/11
+    - Node.js LTS (recomenda-se Node 18+)
+    - `npm` (vem com o Node.js)
+    - Git
+
+- Passos para gerar a versão portátil (gera um `.exe` portátil):
+
+```powershell
+# 1) Clonar o repositório (se ainda não fez):
+git clone https://github.com/gabrielgv13/Portugol-Webstudio.git
+cd Portugol-Webstudio
+
+# 2) Instalar dependências (usa workspace com Lerna):
+npm ci
+
+# 3) Gerar os builds e empacotar a versão portátil:
+npm run package:portable
+
+# OBS: se preferir um diretório com os arquivos em vez de um executável único:
+npm run package:portable:dir
+```
+
+- Resultado:
+    - O artefato será criado em `packages/desktop/dist` com nome similar a
+        `Portugol-Webstudio-<versao>-portable.exe` (ou uma pasta com os arquivos,
+        caso tenha usado `package:portable:dir`).
+
+- Como colocar o artefato em um Release no GitHub:
+
+    - Opção manual (recomendado se você preferir a interface web):
+        1. Acesse a página do repositório no GitHub (sua fork).
+        2. Clique em "Releases" → "Draft a new release".
+        3. Escolha uma tag (ou crie uma nova), preencha o título/descrição e anexe
+             o arquivo `Portugol-Webstudio-<versao>-portable.exe` em "Attach binaries".
+
+    - Opção via `gh` (GitHub CLI):
+
+        ```powershell
+        # criar uma tag local assinada/annotated e enviá-la ao origin
+        git tag -a v<versao>-portable -m "Versão portátil do Portugol Webstudio"
+        git push origin v<versao>-portable
+
+        # criar o release e anexar o artefato (substitua o caminho e a tag)
+        gh release create v<versao>-portable \
+            packages/desktop/dist/Portugol-Webstudio-<versao>-portable.exe \
+            --title "Portugol Webstudio v<versao> (portable)" \
+            --notes "Versão portátil para Windows"
+        ```
+
+        - Observação: para usar `gh` você precisa ter o GitHub CLI instalado e
+            autenticado (`gh auth login`).
+
+- Notas úteis:
+    - O executável gerado não será assinado digitalmente; alguns antivírus podem
+        avisar na primeira execução. Para publicação oficial, considere assinar o
+        binário.
+    - O processo de build pode demorar alguns minutos (dependendo da conexão e
+        do desempenho da máquina).
 Após isto, você poderá acessar a IDE em: [http://localhost:4200](http://localhost:4200)
 
 ## Contribuidores
