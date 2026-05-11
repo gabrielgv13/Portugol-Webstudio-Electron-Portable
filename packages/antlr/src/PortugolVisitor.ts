@@ -43,6 +43,7 @@ import { IndiceArrayContext } from "./PortugolParser.js";
 import { ChamadaFuncaoContext } from "./PortugolParser.js";
 import { ReferenciaArrayContext } from "./PortugolParser.js";
 import { ReferenciaMatrizContext } from "./PortugolParser.js";
+import { LiteralObjetoContext } from "./PortugolParser.js";
 import { MenosUnarioContext } from "./PortugolParser.js";
 import { MaisUnarioContext } from "./PortugolParser.js";
 import { NegacaoContext } from "./PortugolParser.js";
@@ -73,7 +74,10 @@ import { OperacaoShiftLeftContext } from "./PortugolParser.js";
 import { OperacaoShiftRightContext } from "./PortugolParser.js";
 import { OperacaoAndBitwiseContext } from "./PortugolParser.js";
 import { OperacaoOrBitwiseContext } from "./PortugolParser.js";
+import { AcessoPropriedadeContext } from "./PortugolParser.js";
 import { ListaExpressoesContext } from "./PortugolParser.js";
+import { ListaPropriedadesContext } from "./PortugolParser.js";
+import { PropriedadeContext } from "./PortugolParser.js";
 import { EscopoBibliotecaContext } from "./PortugolParser.js";
 
 
@@ -339,6 +343,13 @@ export class PortugolVisitor<Result> extends AbstractParseTreeVisitor<Result> {
      */
     visitReferenciaMatriz?: (ctx: ReferenciaMatrizContext) => Result;
     /**
+     * Visit a parse tree produced by the `literalObjeto`
+     * labeled alternative in `PortugolParser.expressao`.
+     * @param ctx the parse tree
+     * @return the visitor result
+     */
+    visitLiteralObjeto?: (ctx: LiteralObjetoContext) => Result;
+    /**
      * Visit a parse tree produced by the `menosUnario`
      * labeled alternative in `PortugolParser.expressao`.
      * @param ctx the parse tree
@@ -549,11 +560,30 @@ export class PortugolVisitor<Result> extends AbstractParseTreeVisitor<Result> {
      */
     visitOperacaoOrBitwise?: (ctx: OperacaoOrBitwiseContext) => Result;
     /**
+     * Visit a parse tree produced by the `acessoPropriedade`
+     * labeled alternative in `PortugolParser.expressao`.
+     * @param ctx the parse tree
+     * @return the visitor result
+     */
+    visitAcessoPropriedade?: (ctx: AcessoPropriedadeContext) => Result;
+    /**
      * Visit a parse tree produced by `PortugolParser.listaExpressoes`.
      * @param ctx the parse tree
      * @return the visitor result
      */
     visitListaExpressoes?: (ctx: ListaExpressoesContext) => Result;
+    /**
+     * Visit a parse tree produced by `PortugolParser.listaPropriedades`.
+     * @param ctx the parse tree
+     * @return the visitor result
+     */
+    visitListaPropriedades?: (ctx: ListaPropriedadesContext) => Result;
+    /**
+     * Visit a parse tree produced by `PortugolParser.propriedade`.
+     * @param ctx the parse tree
+     * @return the visitor result
+     */
+    visitPropriedade?: (ctx: PropriedadeContext) => Result;
     /**
      * Visit a parse tree produced by `PortugolParser.escopoBiblioteca`.
      * @param ctx the parse tree

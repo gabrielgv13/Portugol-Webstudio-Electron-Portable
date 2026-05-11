@@ -43,6 +43,7 @@ export const TabelaCompatibilidadeChamadaFunção: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.CARACTER]: {
@@ -52,6 +53,7 @@ export const TabelaCompatibilidadeChamadaFunção: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.INTEIRO]: {
@@ -61,6 +63,7 @@ export const TabelaCompatibilidadeChamadaFunção: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.LÓGICO]: {
@@ -70,6 +73,7 @@ export const TabelaCompatibilidadeChamadaFunção: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.REAL]: {
@@ -79,6 +83,7 @@ export const TabelaCompatibilidadeChamadaFunção: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.VAZIO]: {
@@ -88,6 +93,17 @@ export const TabelaCompatibilidadeChamadaFunção: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+  },
+
+  [TipoPrimitivo.OBJETO]: {
+    [TipoPrimitivo.CADEIA]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.CARACTER]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.INTEIRO]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.COMPATÍVEL,
   },
 };
 
@@ -102,6 +118,7 @@ export const TabelaCompatibilidadeRetornoFunção: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.CARACTER]: {
@@ -111,6 +128,7 @@ export const TabelaCompatibilidadeRetornoFunção: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.INTEIRO]: {
@@ -120,6 +138,7 @@ export const TabelaCompatibilidadeRetornoFunção: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.LÓGICO]: {
@@ -129,6 +148,7 @@ export const TabelaCompatibilidadeRetornoFunção: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.REAL]: {
@@ -138,6 +158,7 @@ export const TabelaCompatibilidadeRetornoFunção: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.VAZIO]: {
@@ -147,6 +168,17 @@ export const TabelaCompatibilidadeRetornoFunção: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.COMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+  },
+
+  [TipoPrimitivo.OBJETO]: {
+    [TipoPrimitivo.CADEIA]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.CARACTER]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.INTEIRO]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.COMPATÍVEL,
   },
 };
 
@@ -161,6 +193,7 @@ export const TabelaCompatibilidadeAtribuição: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.CARACTER]: {
@@ -170,6 +203,7 @@ export const TabelaCompatibilidadeAtribuição: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.INTEIRO]: {
@@ -179,6 +213,7 @@ export const TabelaCompatibilidadeAtribuição: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.LÓGICO]: {
@@ -188,6 +223,7 @@ export const TabelaCompatibilidadeAtribuição: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.REAL]: {
@@ -197,6 +233,7 @@ export const TabelaCompatibilidadeAtribuição: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.VAZIO]: {
@@ -206,6 +243,17 @@ export const TabelaCompatibilidadeAtribuição: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+  },
+
+  [TipoPrimitivo.OBJETO]: {
+    [TipoPrimitivo.CADEIA]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.CARACTER]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.INTEIRO]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_IMPLÍCITA,
+    [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.COMPATÍVEL,
   },
 };
 
@@ -220,6 +268,7 @@ export const TabelaCompatibilidadeDivisãoMultiplicaçãoSubtração: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.CARACTER]: {
@@ -229,6 +278,7 @@ export const TabelaCompatibilidadeDivisãoMultiplicaçãoSubtração: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.INTEIRO]: {
@@ -238,6 +288,7 @@ export const TabelaCompatibilidadeDivisãoMultiplicaçãoSubtração: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.LÓGICO]: {
@@ -247,6 +298,7 @@ export const TabelaCompatibilidadeDivisãoMultiplicaçãoSubtração: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.REAL]: {
@@ -256,6 +308,7 @@ export const TabelaCompatibilidadeDivisãoMultiplicaçãoSubtração: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.VAZIO]: {
@@ -265,6 +318,17 @@ export const TabelaCompatibilidadeDivisãoMultiplicaçãoSubtração: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+  },
+
+  [TipoPrimitivo.OBJETO]: {
+    [TipoPrimitivo.CADEIA]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.CARACTER]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.INTEIRO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 };
 
@@ -279,6 +343,7 @@ export const TabelaCompatibilidadeDiferençaIgualdade: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.CARACTER]: {
@@ -288,6 +353,7 @@ export const TabelaCompatibilidadeDiferençaIgualdade: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.INTEIRO]: {
@@ -297,6 +363,7 @@ export const TabelaCompatibilidadeDiferençaIgualdade: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.LÓGICO]: {
@@ -306,6 +373,7 @@ export const TabelaCompatibilidadeDiferençaIgualdade: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.REAL]: {
@@ -315,6 +383,7 @@ export const TabelaCompatibilidadeDiferençaIgualdade: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.VAZIO]: {
@@ -324,6 +393,17 @@ export const TabelaCompatibilidadeDiferençaIgualdade: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+  },
+
+  [TipoPrimitivo.OBJETO]: {
+    [TipoPrimitivo.CADEIA]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
+    [TipoPrimitivo.CARACTER]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
+    [TipoPrimitivo.INTEIRO]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
+    [TipoPrimitivo.LÓGICO]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
+    [TipoPrimitivo.REAL]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
+    [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
   },
 };
 
@@ -335,6 +415,7 @@ export const TabelaCompatibilidadeEOu: Record<TipoPrimitivo, Record<TipoPrimitiv
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.CARACTER]: {
@@ -344,6 +425,7 @@ export const TabelaCompatibilidadeEOu: Record<TipoPrimitivo, Record<TipoPrimitiv
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.INTEIRO]: {
@@ -353,6 +435,7 @@ export const TabelaCompatibilidadeEOu: Record<TipoPrimitivo, Record<TipoPrimitiv
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.LÓGICO]: {
@@ -362,6 +445,7 @@ export const TabelaCompatibilidadeEOu: Record<TipoPrimitivo, Record<TipoPrimitiv
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.REAL]: {
@@ -371,6 +455,7 @@ export const TabelaCompatibilidadeEOu: Record<TipoPrimitivo, Record<TipoPrimitiv
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.VAZIO]: {
@@ -380,6 +465,17 @@ export const TabelaCompatibilidadeEOu: Record<TipoPrimitivo, Record<TipoPrimitiv
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+  },
+
+  [TipoPrimitivo.OBJETO]: {
+    [TipoPrimitivo.CADEIA]: ResultadoCompatibilidade.COMPATÍVEL,
+    [TipoPrimitivo.CARACTER]: ResultadoCompatibilidade.COMPATÍVEL,
+    [TipoPrimitivo.INTEIRO]: ResultadoCompatibilidade.COMPATÍVEL,
+    [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.COMPATÍVEL,
+    [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL,
+    [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.COMPATÍVEL,
   },
 };
 
@@ -394,6 +490,7 @@ export const TabelaCompatibilidadeMaiorMaiorIgualMenorMenorIgual: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.CARACTER]: {
@@ -403,6 +500,7 @@ export const TabelaCompatibilidadeMaiorMaiorIgualMenorMenorIgual: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.INTEIRO]: {
@@ -412,6 +510,7 @@ export const TabelaCompatibilidadeMaiorMaiorIgualMenorMenorIgual: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.LÓGICO]: {
@@ -421,6 +520,7 @@ export const TabelaCompatibilidadeMaiorMaiorIgualMenorMenorIgual: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.REAL]: {
@@ -430,6 +530,7 @@ export const TabelaCompatibilidadeMaiorMaiorIgualMenorMenorIgual: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.VAZIO]: {
@@ -439,6 +540,17 @@ export const TabelaCompatibilidadeMaiorMaiorIgualMenorMenorIgual: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+  },
+
+  [TipoPrimitivo.OBJETO]: {
+    [TipoPrimitivo.CADEIA]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
+    [TipoPrimitivo.CARACTER]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
+    [TipoPrimitivo.INTEIRO]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
+    [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.REAL]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.LÓGICO],
+    [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 };
 
@@ -453,6 +565,7 @@ export const TabelaCompatibilidadeModulo: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.CARACTER]: {
@@ -462,6 +575,7 @@ export const TabelaCompatibilidadeModulo: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.INTEIRO]: {
@@ -471,6 +585,7 @@ export const TabelaCompatibilidadeModulo: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.LÓGICO]: {
@@ -480,6 +595,7 @@ export const TabelaCompatibilidadeModulo: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.REAL]: {
@@ -489,6 +605,7 @@ export const TabelaCompatibilidadeModulo: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.VAZIO]: {
@@ -498,6 +615,17 @@ export const TabelaCompatibilidadeModulo: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+  },
+
+  [TipoPrimitivo.OBJETO]: {
+    [TipoPrimitivo.CADEIA]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.CARACTER]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.INTEIRO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 };
 
@@ -512,6 +640,7 @@ export const TabelaCompatibilidadeBitwise: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.CARACTER]: {
@@ -521,6 +650,7 @@ export const TabelaCompatibilidadeBitwise: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.INTEIRO]: {
@@ -530,6 +660,7 @@ export const TabelaCompatibilidadeBitwise: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.LÓGICO]: {
@@ -539,6 +670,7 @@ export const TabelaCompatibilidadeBitwise: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.REAL]: {
@@ -548,6 +680,7 @@ export const TabelaCompatibilidadeBitwise: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.VAZIO]: {
@@ -557,6 +690,17 @@ export const TabelaCompatibilidadeBitwise: Record<
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+  },
+
+  [TipoPrimitivo.OBJETO]: {
+    [TipoPrimitivo.CADEIA]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.CARACTER]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.INTEIRO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 };
 
@@ -568,6 +712,7 @@ export const TabelaCompatibilidadeSoma: Record<TipoPrimitivo, Record<TipoPrimiti
     [TipoPrimitivo.LÓGICO]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.CADEIA],
     [TipoPrimitivo.REAL]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.CADEIA],
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.CARACTER]: {
@@ -577,6 +722,7 @@ export const TabelaCompatibilidadeSoma: Record<TipoPrimitivo, Record<TipoPrimiti
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.INTEIRO]: {
@@ -586,6 +732,7 @@ export const TabelaCompatibilidadeSoma: Record<TipoPrimitivo, Record<TipoPrimiti
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.LÓGICO]: {
@@ -595,6 +742,7 @@ export const TabelaCompatibilidadeSoma: Record<TipoPrimitivo, Record<TipoPrimiti
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.REAL]: {
@@ -604,6 +752,7 @@ export const TabelaCompatibilidadeSoma: Record<TipoPrimitivo, Record<TipoPrimiti
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.COMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 
   [TipoPrimitivo.VAZIO]: {
@@ -613,5 +762,16 @@ export const TabelaCompatibilidadeSoma: Record<TipoPrimitivo, Record<TipoPrimiti
     [TipoPrimitivo.LÓGICO]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.REAL]: ResultadoCompatibilidade.INCOMPATÍVEL,
     [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+  },
+
+  [TipoPrimitivo.OBJETO]: {
+    [TipoPrimitivo.CADEIA]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.CADEIA],
+    [TipoPrimitivo.CARACTER]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.CADEIA],
+    [TipoPrimitivo.INTEIRO]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.CADEIA],
+    [TipoPrimitivo.LÓGICO]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.CADEIA],
+    [TipoPrimitivo.REAL]: [ResultadoCompatibilidade.COMPATÍVEL_COM_CONVERSÃO_DE_OPERAÇÃO, TipoPrimitivo.CADEIA],
+    [TipoPrimitivo.VAZIO]: ResultadoCompatibilidade.INCOMPATÍVEL,
+    [TipoPrimitivo.OBJETO]: ResultadoCompatibilidade.INCOMPATÍVEL,
   },
 };

@@ -9,6 +9,7 @@ export enum TipoPrimitivo {
   LÓGICO = "logico",
   VAZIO = "vazio",
   CARACTER = "caracter",
+  OBJETO = "objeto",
 }
 
 export type Tipo = { primitivo: TipoPrimitivo } & (
@@ -36,7 +37,8 @@ export function parseTipoPrimitivo(tipo: TerminalNode | null): TipoPrimitivo {
     case "cadeia":
     case "logico":
     case "vazio":
-    case "caracter": {
+    case "caracter":
+    case "objeto": {
       return text as TipoPrimitivo;
     }
 

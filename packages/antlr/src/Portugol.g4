@@ -130,7 +130,9 @@ expressao
     :
         escopoBiblioteca? ID  ABRE_PARENTESES listaExpressoes? FECHA_PARENTESES                 #chamadaFuncao    // chamadas de função como f(), f(x), f(1,2) ou Graficos.carregar(...)
     |   escopoBiblioteca? ID indiceArray                                                        #referenciaArray  // array como a[i]
-    |   escopoBiblioteca? ID indiceArray indiceArray?                                           #referenciaMatriz // a[i][j]
+        |   escopoBiblioteca? ID indiceArray indiceArray?                                           #referenciaMatriz // a[i][j]
+        |   expressao PONTO ID                                                                     #acessoPropriedade // objeto.propriedade
+        |   ABRE_CHAVES listaPropriedades? FECHA_CHAVES                                           #literalObjeto // objeto literal { nome: "Ana", idade: 30 }
     |   OP_SUBTRACAO expressao                                                                  #menosUnario
     |   OP_ADICAO expressao                                                                     #maisUnario
     |   OP_NAO expressao                                                                        #negacao
@@ -165,6 +167,12 @@ expressao
 
 listaExpressoes
     :   (expressao | atribuicaoComposta | atribuicao) (VIRGULA (expressao | atribuicaoComposta | atribuicao))* ;
+
+listaPropriedades
+    : propriedade (VIRGULA propriedade)* ;
+
+propriedade
+    : (ID | STRING | CARACTER) DOISPONTOS expressao ;
 
 escopoBiblioteca
     :   (ID PONTO) ;

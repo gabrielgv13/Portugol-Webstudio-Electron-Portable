@@ -43,6 +43,7 @@ import { IndiceArrayContext } from "./PortugolParser.js";
 import { ChamadaFuncaoContext } from "./PortugolParser.js";
 import { ReferenciaArrayContext } from "./PortugolParser.js";
 import { ReferenciaMatrizContext } from "./PortugolParser.js";
+import { LiteralObjetoContext } from "./PortugolParser.js";
 import { MenosUnarioContext } from "./PortugolParser.js";
 import { MaisUnarioContext } from "./PortugolParser.js";
 import { NegacaoContext } from "./PortugolParser.js";
@@ -73,7 +74,10 @@ import { OperacaoShiftLeftContext } from "./PortugolParser.js";
 import { OperacaoShiftRightContext } from "./PortugolParser.js";
 import { OperacaoAndBitwiseContext } from "./PortugolParser.js";
 import { OperacaoOrBitwiseContext } from "./PortugolParser.js";
+import { AcessoPropriedadeContext } from "./PortugolParser.js";
 import { ListaExpressoesContext } from "./PortugolParser.js";
+import { ListaPropriedadesContext } from "./PortugolParser.js";
+import { PropriedadeContext } from "./PortugolParser.js";
 import { EscopoBibliotecaContext } from "./PortugolParser.js";
 
 
@@ -507,6 +511,18 @@ export class PortugolListener implements ParseTreeListener {
      */
     exitReferenciaMatriz?: (ctx: ReferenciaMatrizContext) => void;
     /**
+     * Enter a parse tree produced by the `literalObjeto`
+     * labeled alternative in `PortugolParser.expressao`.
+     * @param ctx the parse tree
+     */
+    enterLiteralObjeto?: (ctx: LiteralObjetoContext) => void;
+    /**
+     * Exit a parse tree produced by the `literalObjeto`
+     * labeled alternative in `PortugolParser.expressao`.
+     * @param ctx the parse tree
+     */
+    exitLiteralObjeto?: (ctx: LiteralObjetoContext) => void;
+    /**
      * Enter a parse tree produced by the `menosUnario`
      * labeled alternative in `PortugolParser.expressao`.
      * @param ctx the parse tree
@@ -867,6 +883,18 @@ export class PortugolListener implements ParseTreeListener {
      */
     exitOperacaoOrBitwise?: (ctx: OperacaoOrBitwiseContext) => void;
     /**
+     * Enter a parse tree produced by the `acessoPropriedade`
+     * labeled alternative in `PortugolParser.expressao`.
+     * @param ctx the parse tree
+     */
+    enterAcessoPropriedade?: (ctx: AcessoPropriedadeContext) => void;
+    /**
+     * Exit a parse tree produced by the `acessoPropriedade`
+     * labeled alternative in `PortugolParser.expressao`.
+     * @param ctx the parse tree
+     */
+    exitAcessoPropriedade?: (ctx: AcessoPropriedadeContext) => void;
+    /**
      * Enter a parse tree produced by `PortugolParser.listaExpressoes`.
      * @param ctx the parse tree
      */
@@ -876,6 +904,26 @@ export class PortugolListener implements ParseTreeListener {
      * @param ctx the parse tree
      */
     exitListaExpressoes?: (ctx: ListaExpressoesContext) => void;
+    /**
+     * Enter a parse tree produced by `PortugolParser.listaPropriedades`.
+     * @param ctx the parse tree
+     */
+    enterListaPropriedades?: (ctx: ListaPropriedadesContext) => void;
+    /**
+     * Exit a parse tree produced by `PortugolParser.listaPropriedades`.
+     * @param ctx the parse tree
+     */
+    exitListaPropriedades?: (ctx: ListaPropriedadesContext) => void;
+    /**
+     * Enter a parse tree produced by `PortugolParser.propriedade`.
+     * @param ctx the parse tree
+     */
+    enterPropriedade?: (ctx: PropriedadeContext) => void;
+    /**
+     * Exit a parse tree produced by `PortugolParser.propriedade`.
+     * @param ctx the parse tree
+     */
+    exitPropriedade?: (ctx: PropriedadeContext) => void;
     /**
      * Enter a parse tree produced by `PortugolParser.escopoBiblioteca`.
      * @param ctx the parse tree

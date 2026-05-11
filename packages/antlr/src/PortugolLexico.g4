@@ -5,9 +5,9 @@ FECHA_PARENTESES:           ')' ;
 ABRE_COLCHETES:             '[' ;
 FECHA_COLCHETES:            ']' ;
 ABRE_CHAVES:                '{' ;
-FECHA_CHAVES:               '}' ; 
+FECHA_CHAVES:               '}' ;
 
-TIPO:           'real' | 'inteiro' | 'vazio' | 'logico' | 'cadeia' | 'caracter' ; 
+TIPO:           'real' | 'inteiro' | 'vazio' | 'logico' | 'cadeia' | 'caracter' | 'objeto' ;
 
 FACA:           'faca' ;
 ENQUANTO:       'enquanto' ;
@@ -78,13 +78,13 @@ ID:             (LETRA | '_') (LETRA | [0-9] | '_')* ;
 
 fragment LETRA: [a-zA-Z] ;
 
-REAL:   DIGITO+ '.' DIGITO* 
-        | '.' DIGITO+          
+REAL:   DIGITO+ '.' DIGITO*
+        | '.' DIGITO+
         ;
 
-fragment DIGITO: [0-9] ; 
+fragment DIGITO: [0-9] ;
 
-INT:    DIGITO+ { 
+INT:    DIGITO+ {
     if (isNaN(parseInt(this.text))) {
       throw new Error(`Dígito inválido: ${this.text}`);
     }

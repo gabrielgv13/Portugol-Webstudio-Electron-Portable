@@ -1,54 +1,56 @@
 import { Expressão } from "../nodes/Expressão.js";
 import {
-  CadeiaExpr,
-  CaractereExpr,
-  ChamadaFunçãoExpr,
-  DecrementoUnárioPrefixadoExpr,
-  DecrementoUnárioPósfixadoExpr,
-  DivisãoExpr,
-  ExpressãoEntreParênteses,
-  ExpressãoUnária,
-  IncrementoUnárioPrefixadoExpr,
-  IncrementoUnárioPósfixadoExpr,
-  InteiroExpr,
-  LógicoExpr,
-  MaisUnárioExpr,
-  MenosUnárioExpr,
-  MultiplicaçãoExpr,
-  MóduloExpr,
-  NegaçãoBitwiseExpr,
-  NegaçãoExpr,
-  OperaçãoAndBitwiseExpr,
-  OperaçãoAndLógicoExpr,
-  OperaçãoDiferençaExpr,
-  OperaçãoIgualdadeExpr,
-  OperaçãoMaiorOuIgualQueExpr,
-  OperaçãoMaiorQueExpr,
-  OperaçãoMenorOuIgualQueExpr,
-  OperaçãoMenorQueExpr,
-  OperaçãoOrBitwiseExpr,
-  OperaçãoOrLógicoExpr,
-  OperaçãoShiftLeftExpr,
-  OperaçãoShiftRightExpr,
-  OperaçãoXorExpr,
-  RealExpr,
-  ReferênciaArrayExpr,
-  ReferênciaMatrizExpr,
-  ReferênciaVarExpr,
-  SomaExpr,
-  SubtraçãoExpr,
-  VazioExpr,
+    AcessoPropriedadeExpr,
+    CadeiaExpr,
+    CaractereExpr,
+    ChamadaFunçãoExpr,
+    DecrementoUnárioPrefixadoExpr,
+    DecrementoUnárioPósfixadoExpr,
+    DivisãoExpr,
+    ExpressãoEntreParênteses,
+    ExpressãoUnária,
+    IncrementoUnárioPrefixadoExpr,
+    IncrementoUnárioPósfixadoExpr,
+    InteiroExpr,
+    LiteralObjetoExpr,
+    LógicoExpr,
+    MaisUnárioExpr,
+    MenosUnárioExpr,
+    MultiplicaçãoExpr,
+    MóduloExpr,
+    NegaçãoBitwiseExpr,
+    NegaçãoExpr,
+    OperaçãoAndBitwiseExpr,
+    OperaçãoAndLógicoExpr,
+    OperaçãoDiferençaExpr,
+    OperaçãoIgualdadeExpr,
+    OperaçãoMaiorOuIgualQueExpr,
+    OperaçãoMaiorQueExpr,
+    OperaçãoMenorOuIgualQueExpr,
+    OperaçãoMenorQueExpr,
+    OperaçãoOrBitwiseExpr,
+    OperaçãoOrLógicoExpr,
+    OperaçãoShiftLeftExpr,
+    OperaçãoShiftRightExpr,
+    OperaçãoXorExpr,
+    RealExpr,
+    ReferênciaArrayExpr,
+    ReferênciaMatrizExpr,
+    ReferênciaVarExpr,
+    SomaExpr,
+    SubtraçãoExpr,
+    VazioExpr,
 } from "../nodes/index.js";
 import { Escopo } from "./Escopo.js";
 import { TipoPrimitivo } from "./Tipo.js";
 import {
-  ResultadoCompatibilidade,
-  TabelaCompatibilidadeBitwise,
-  TabelaCompatibilidadeDiferençaIgualdade,
-  TabelaCompatibilidadeDivisãoMultiplicaçãoSubtração,
-  TabelaCompatibilidadeEOu,
-  TabelaCompatibilidadeModulo,
-  TabelaCompatibilidadeSoma,
+    ResultadoCompatibilidade,
+    TabelaCompatibilidadeBitwise,
+    TabelaCompatibilidadeDiferençaIgualdade,
+    TabelaCompatibilidadeDivisãoMultiplicaçãoSubtração,
+    TabelaCompatibilidadeEOu,
+    TabelaCompatibilidadeModulo,
+    TabelaCompatibilidadeSoma,
 } from "./compatibilidade.js";
 
 export function resolverResultadoExpressão(expressão: Expressão | undefined, escopo: Escopo): TipoPrimitivo {
@@ -275,6 +277,27 @@ export function resolverResultadoExpressão(expressão: Expressão | undefined, 
       }
 
       return fun.retorno ? fun.retorno.primitivo : TipoPrimitivo.VAZIO;
+    }
+
+    case LiteralObjetoExpr: {
+      // ensure property values are valid expressions (they will be traversed elsewhere)
+      return TipoPrimitivo.OBJETO;
+    }
+
+    case AcessoPropriedadeExpr: {
+      const acesso = expressão as AcessoPropriedadeExpr;
+
+      if (!acesso.objeto) {
+        throw new Error(`Expressão de objeto ausente ao acessar propriedade '${acesso.propriedade}'`);
+      }
+
+      const objType = resolverResultadoExpressão(acesso.objeto, escopo);
+
+      if (objType !== TipoPrimitivo.OBJETO) {
+        throw new Error(`Não é possível acessar propriedade em expressão do tipo '${objType}'`);
+      }
+
+      return TipoPrimitivo.OBJETO;
     }
 
     default: {
