@@ -86,6 +86,6 @@ Arquivo: `OBJECT_IMPLEMENTATION.md` contém referências técnicas completas.
 
 ---
 
-**Branch:** Objetos  
-**Status:** ✅ Pronto para continuar  
+**Branch:** Objetos
+**Status:** ✅ Pronto para continuar
 **Última atualização:** 11/05/2026

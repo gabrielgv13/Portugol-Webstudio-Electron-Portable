@@ -101,13 +101,13 @@ programa {
 ```
 
 ### Casos de Teste Validados
-✅ Atribuição de `cadeia` a `objeto`  
-✅ Atribuição de `inteiro` a `objeto`  
-✅ Atribuição de `real` a `objeto`  
-✅ Atribuição de `lógico` a `objeto`  
-✅ Atribuição de `caracter` a `objeto`  
-✅ Atribuição de literal de objeto a `objeto`  
-✅ Zero erros de parse  
+✅ Atribuição de `cadeia` a `objeto`
+✅ Atribuição de `inteiro` a `objeto`
+✅ Atribuição de `real` a `objeto`
+✅ Atribuição de `lógico` a `objeto`
+✅ Atribuição de `caracter` a `objeto`
+✅ Atribuição de literal de objeto a `objeto`
+✅ Zero erros de parse
 ✅ Zero erros semânticos
 
 ## Problemas Resolvidos
@@ -162,6 +162,6 @@ git commit -m "descricao das mudancas"
 
 ---
 
-**Criado em:** 11 de Maio de 2026  
-**Pronto para:** Continuação de desenvolvimento  
+**Criado em:** 11 de Maio de 2026
+**Pronto para:** Continuação de desenvolvimento
 **Validado:** ✅ Sim

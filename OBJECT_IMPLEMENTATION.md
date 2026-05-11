@@ -69,7 +69,7 @@ listaPropriedades: propriedade (VIRGULA propriedade)*;
 propriedade: (ID | STRING | CARACTER) DOISPONTOS expressao;
 ```
 
-**Sintaxe:** 
+**Sintaxe:**
 - `{ nome: "Gabriel", idade: 30 }`
 - `{ "chave": valor }`
 - `{ 'c': "valor" }`
@@ -397,7 +397,7 @@ Para continuar trabalhando neste feature:
 
 ---
 
-**Autor:** GitHub Copilot  
-**Data de Implementação:** 11 de Maio de 2026  
-**Status:** Completo e Validado ✅  
+**Autor:** GitHub Copilot
+**Data de Implementação:** 11 de Maio de 2026
+**Status:** Completo e Validado ✅
 **Branch:** Objetos
